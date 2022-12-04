@@ -22,7 +22,7 @@
   - POST.
   - Body: json
 
-  ```json
+  ```
   {'type': 'padawan', 'spec': 'QA', 'ex': '1', 'current_user': {'uid': YOUR_ID, 'uip:': ‘YOUR_IP’}}
   ```
 
