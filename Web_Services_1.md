@@ -1,6 +1,6 @@
-WS_1: http://162.55.220.72:5011/user
+`WS_1` : http://162.55.220.72:5011/user
 
-WS_2: http://23.88.52.139:5012/users_team
+`WS_2` : http://23.88.52.139:5012/users_team
 
 **1.** Request `ws1`
 
