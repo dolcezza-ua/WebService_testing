@@ -1,6 +1,6 @@
 # WebService_testing
 
-## Task 1
+## Task 1 (Web_Services_1)
 
 **Проверить всё ли нормально в работает связка вебсервисов.**
 
@@ -22,8 +22,8 @@
   - POST.
   - Body: json
 
-  ```
-  {'type': 'padawan', 'spec': 'QA', 'ex': '1', 'current_user': {'uid': YOUR_ID, 'uip:': ‘YOUR_IP’}}
+  ```json
+  {"type": "padawan", "spec": "QA", "ex": "1", "current_user": {"uid": YOUR_ID, "uip:": YOUR_IP}}
   ```
 
 * `WS_2` принимает запрос от `WS_1`, дополняет полученную Json дополнительной информацией.
