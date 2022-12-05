@@ -1,43 +1,47 @@
 # WebService_testing
 
-## Here are three examples of testing related web services (Task 1, Task 2, Task 3).
+## Here are three tasks for testing interconnected work of web services <br>(Task 1, Task 2, Task 3).
 
-The solution to Task 1 is here: [Web_Services_1.md](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_1.md); and postman collection is here: [Web_Services_1.postman_collection.json](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_1.postman_collection.json).
+---
 
-The solution to Task 2 is here: [Web_Services_2.md](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_2.md); and postman collection is here: [Web_Services_2.postman_collection.json](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_2.postman_collection.json).
+Solution to Task 1 - [Web_Services_1.md](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_1.md); postman collection - [Web_Services_1.postman_collection.json](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_1.postman_collection.json).
 
-The solution to Task 3 is here: [Web_Services_3.md](); and postman collection is here: [Web_Services_1.postman_collection.json]().
+Solution to Task 2 - [Web_Services_2.md](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_2.md); postman collection - [Web_Services_2.postman_collection.json](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_2.postman_collection.json).
+
+Solution to Task 3 - [Web_Services_3.md](); postman collection - [Web_Services_1.postman_collection.json]().
 
 ---
 
 ## Task 1 (Web_Services_1)
 
-**Проверить всё ли нормально в работает связка вебсервисов.**
+**Verify the interconnected work of web services.**
 
-Есть 2 ws :
+There are two web services :
 
-`WS_1` : http://162.55.220.72:5011/user
+`WS_1` - 162.55.220.72:5011
 
-`WS_2` : http://23.88.52.139:5012/users_team
+`WS_2` - 23.88.52.139:5012
 
-- `WS_1` получает запрос от клиента.
-  - POST.
-  - Body: json
+- `WS_1` receives a request from a client:
+  - Method: POST
+  - EndPoint: /user
+  - Body:
     ```json
     {"user_id": YOUR_ID }
     ```
 
-* После получения запроса `WS_1` отправляет запрос на `WS_2`
+* After receiving the request, `WS_1` sends the request to `WS_2`:
 
-  - POST.
-  - Body: json
+  - Method: POST
 
-  ```json
-  {"type": "padawan", "spec": "QA", "ex": "1", "current_user": {"uid": YOUR_ID, "uip:": YOUR_IP}}
-  ```
+  * EndPoint: /users_team
 
-* `WS_2` принимает запрос от `WS_1`, дополняет полученную Json дополнительной информацией.
-* `WS_2` отправляет ответ на `WS_1` в виде
+  - Body:
+    ```json
+    {"type": "padawan", "spec": "QA", "ex": "1", "current_user": {"uid": YOUR_ID, "uip:": YOUR_IP}}
+    ```
+
+* `WS_2` receives a request from `WS_1`, completes the received response with additional information and sends it all to `WS_1` :
   ```json
   {
     "user_divices_data": {
@@ -58,8 +62,8 @@ The solution to Task 3 is here: [Web_Services_3.md](); and postman collection is
     },
     "user_static_data": {
       "current_user": {
-        "uid": 1,
-        "uip:": "127.0.0.1"
+        "uid": YOUR_ID,
+        "uip:": YOUR_IP
       },
       "ex": "1",
       "spec": "QA",
@@ -67,90 +71,106 @@ The solution to Task 3 is here: [Web_Services_3.md](); and postman collection is
     }
   }
   ```
-* `WS_1` перенаправляет запрос клиенту
+* `WS_1` sends the received response to the client.
+
+### Go to the [Solution of Task 1](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_1.md)
 
 ---
 
 ## Task 2 (Web_Services_2)
 
-**Проверить всё ли нормально в работает связка вебсервисов.**
+**Verify the interconnected work of web services.**
 
-Есть 2 ws.:
+There are two web services :
 
-`WS_1` : 162.55.220.72:5021
+`WS_1` - 162.55.220.72:5021
 
-`WS_2` : 23.88.52.139:5022
+`WS_2` - 23.88.52.139:5022
 
-- Endpoint /jobs
-- 162.55.220.72:5021/jobs
-- GET.
-  `WS_1` получает запрос от клиента.
-  Никаких параметров не нужно
-  WS_1 парсит json который храниться на файловой системе сервера. Внутри этого json лежит 7 вакансий.
-  WS_1 возвращает клиенту json в котором будет 7 вакансий.
-  —-------
-- Endpoint /jobs
-- 162.55.220.72:5021/jobs
-- POST.
-  `WS_1` получает запрос от клиента.
-  В теле запроса должен быть json
+- `WS_1` receives a request from a client:
 
-```json
-{“job_id”: 1}
-```
+  - Method: GET
+  - EndPoint: /jobs
 
-После получения запроса ws_1 парсит json, в которой 7 вакансий и отправляет запрос на ws_2
-23.88.52.139:5022/get_job
-В теле запроса должен быть json
+`WS_1` returns to client 'json' response containing 7 vacancies.
 
-```json
-{“job_id”: 1, “j_data”: json}
-```
+- `WS_1` receives a next request from a client:
 
-WS_2 получает запрос от WS_1
-WS_2 выбирает одну вакансию у которой key = “job_id”
-WS_2 возвращает json вакансии в WS_1
-"6":
+  - Method: POST
+  - EndPoint: /jobs
+  - Body:
 
-```json
-{
-  "Employee Status": "Full-time",
-  "Job Posting": "Nov 15 2022",
-  "description": "We are looking for a Quality Assurance (QA) engineer to develop and execute exploratory and automated tests to ensure product quality. QA engineer responsibilities include designing and implementing tests, debugging and defining corrective actions. You will also review system requirements and track quality assurance metrics.",
-  "firm_title": "Banyan Data Services",
-  "position_title": "Quality Assurance Engineer",
-  "skills": ["API Testing", "Mobile testing", "Appium", "Selenium"]
-}
-```
+    ```json
+    { "job_id": JOB_ID }
+    ```
 
-WS_1 возвращает json вакансии клиенту.
+- `WS_1` parses 'json' and sends the request to `WS_2`:
+
+  - Method: POST
+  - EndPoint: /get_job
+  - Body:
+
+    ```json
+     {"job_id": JOB_ID, "j_data": 'json'}
+    ```
+
+- `WS_2` selects 1 vacancy with a key = "job_id" and sends it to `WS_1`. For example, if the key = 6, then the response will be:
+
+  ```json
+  {
+    "Employee Status": "Full-time",
+    "Job Posting": "Nov 15 2022",
+    "description": "We are looking for a Quality Assurance (QA) engineer to develop and execute exploratory and automated tests to ensure product quality. QA engineer responsibilities include designing and implementing tests, debugging and defining corrective actions. You will also review system requirements and track quality assurance metrics.",
+    "firm_title": "Banyan Data Services",
+    "position_title": "Quality Assurance Engineer",
+    "skills": ["API Testing", "Mobile testing", "Appium", "Selenium"]
+  }
+  ```
+
+- `WS_1` sends this received response to the client.
+
+### Go to the [Solution of Task 2](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_2.md)
 
 ---
 
 ## Task 3 (Web_Services_3)
 
-**Проверить всё ли нормально в работает связка вебсервисов.**
+**Verify the interconnected work of web services.**
 
-Есть 2 ws.
-WS_1 - 162.55.220.72:5031
-WS_2 - 23.88.52.139:5032
-—---------
-Endpoint /jobs_count
-162.55.220.72:5021/jobs_count
-GET.
-WS_1 получает запрос от клиента.
-Никаких параметров не нужно
-WS_1 отправляет запрос на WS_2
-23.88.52.139:5032/get_jobs_count
+There are two web services :
+
+`WS_1` - 162.55.220.72:5031
+
+`WS_2` - 23.88.52.139:5032
+
+- `WS_1` receives a request from a client:
+
+  - Method: GET
+  - EndPoint: /jobs_count
+
+    WS_1 отправляет запрос на WS_2
+    23.88.52.139:5032/get_jobs_count
 
 WS_2 получает запрос от WS_1
 WS_2 парсит json, в которой 7 вакансий и считает количество вакансий. По умолчанию в json 7 вакансий.
-WS_2 отправляет ответ на WS_1 в котором будет json {“jobs_count”:7}
-WS_1 получает ответ от WS_2 и отправляет json {“jobs_count”:7} клиенту.
+WS_2 отправляет ответ на WS_1 в котором будет json
+
+```json
+{ "jobs_count": 7 }
+```
+
+WS_1 получает ответ от WS_2 и отправляет json
+
+```json
+{ "jobs_count": 7 }
+```
+
+клиенту.
+
 —-----------------------------
 Endpoint /all_jobs
-162.55.220.72:5021/all_jobs
-POST.
+162.55.220.72:5031/all_jobs
+Get.
 WS_1 получает запрос от клиента.
 Никаких параметров не нужно
 WS_1 отправляет запрос на WS_2Проверить всё ли нормально в работает связка веб сервисов.
@@ -166,19 +186,22 @@ WS_1 получает ответ от WS_2 и отправляет json клие
 —-----------------------------
 
 Endpoint /add_job
-162.55.220.72:5021/add_job
+162.55.220.72:5031/add_job
 POST.
 WS_1 получает запрос от клиента.
 Никаких параметров не нужно
 WS_1 отправляет запрос на WS_2
 23.88.52.139:5032/add_job_item
 В теле запроса должен быть json
-{"firm_title": “firm_title”,
-"position_title": “position_title”,
-"skills": [“skill_1”, “skill_2”, “skill_3”]
+
+```json
+{"firm_title": "firm_title",
+"position_title": "position_title",
+"skills": ["skill_1", "skill_2", "skill_3"],
 "description": description,
 "Job Posting": job_posting,
 "Employee Status": employee_status}
+```
 
 WS_2 получает запрос от WS_1
 WS_2 парсит json, в которой 7 вакансий и считает количество вакансий. По умолчанию в json 7 вакансий.
@@ -186,5 +209,12 @@ WS_2 добавляет в json присланную из WS_1 json.
 У добавленной вакансии будет id = +1 к общему количеству вакансий в json (n+1)
 
 WS_2 отправляет ответ на WS_1 в котором будет json
-{"result_message":"Job added. Job id is 8",
-"check_message": "call /all_jobs endpoint for checking."}
+
+```json
+{
+  "result_message": "Job added. Job id is 8",
+  "check_message": "call /all_jobs endpoint for checking."
+}
+```
+
+### Go to the [Solution of Task 3]()
