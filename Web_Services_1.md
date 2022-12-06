@@ -4,7 +4,7 @@
 
 `WS_2` - 23.88.52.139:5012
 
-**1.** Request `ws1`
+**1.** Request `ws1` to the WS_1
 
 - Protocol: http
 
@@ -49,7 +49,7 @@
 }
 ```
 
-**2.** Request `ws2`
+**2.** Request `ws2` to the WS_2
 
 - Protocol: http
 
@@ -119,8 +119,8 @@
   },
   "user_static_data": {
     "current_user": {
-      "uid": 1,
-      "uip:": "127.0.0.1"
+      "uid": YOUR_ID,
+      "uip:": "YOUR_IP"
     },
     "ex": "1",
     "spec": "QA",
@@ -131,6 +131,8 @@
 
 ## Conclusion :
 
-Responses contain an empty "mobile" section.
+- Responses contain empty "mobile" section.
 
-**WS_2 web service does not work correctly.**
+* Information from the "mobile" section is contained in the WS_2 web service. In response to a direct Request `ws2` to this web service, this information is not displayed.
+
+* **This means that the WS_2 web service does not work correctly and does not give correct response (when sending a request to it, using the POST method, to the EndPoint "users_team" ).**

@@ -4,7 +4,7 @@
 
 `WS_2` - 23.88.52.139:5022
 
-**1.** Request `ws1(2)`
+**1.** Request `ws1(2)` to the WS_1
 
 - Protocol: http
 
@@ -93,7 +93,7 @@
 }
 ```
 
-**2.** Request `ws2(2)`
+**2.** Request `ws2(2)` to the WS_1
 
 - Protocol: http
 
@@ -123,7 +123,7 @@
 }
 ```
 
-**3.** Request `ws3(2)`
+**3.** Request `ws3(2)` to the WS_2
 
 - Protocol: http
 
@@ -243,6 +243,6 @@
 
 ## Conclusion :
 
-There is no "Job Posting" section in Request ws2(2).
+- There is no "Job Posting" section in the response to Request ws2(2) to the WS_1.
 
-**WS_1 web service does not work correctly (when sending a request to the EndPoint "jobs" using the POST method).**
+- **This means that the `WS_1` web service does not give correct response (when sending a request to it, using the POST method, to the EndPoint "jobs").**

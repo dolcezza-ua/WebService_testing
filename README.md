@@ -8,7 +8,7 @@ Solution to Task 1 - [Web_Services_1.md](https://github.com/dolcezza-ua/WebServi
 
 Solution to Task 2 - [Web_Services_2.md](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_2.md); postman collection - [Web_Services_2.postman_collection.json](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_2.postman_collection.json).
 
-Solution to Task 3 - [Web_Services_3.md](); postman collection - [Web_Services_1.postman_collection.json]().
+Solution to Task 3 - [Web_Services_3.md](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_3.md); postman collection - [Web_Services_1.postman_collection.json](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_3.postman_collection.json).
 
 ---
 

@@ -4,7 +4,7 @@
 
 `WS_2` - 23.88.52.139:5032
 
-**1.** Request `ws1(3)`
+**1.** Request `ws1(3)` to the WS_1
 
 - Protocol: http
 
@@ -24,7 +24,7 @@
 }
 ```
 
-**2.** Request `ws2(3)`
+**2.** Request `ws2(3)` to the WS_2
 
 - Protocol: http
 
@@ -44,7 +44,7 @@
 }
 ```
 
-**3.** Request `ws3(3)`
+**3.** Request `ws3(3)` to the WS_1
 
 - Protocol: http
 
@@ -58,7 +58,7 @@
 
 **Response** [^json]
 
-**4.** Request `ws4(3)`
+**4.** Request `ws4(3)` to the WS_1
 
 - Protocol: http
 
@@ -92,7 +92,7 @@
 }
 ```
 
-**5.** Request `ws5(3)`
+**5.** Request `ws5(3)` to the WS_2
 
 - Protocol: http
 
@@ -128,8 +128,12 @@
 
 ## Conclusion :
 
-The Response to the Request ws3(3) contains an empty "Job Posting" section, except for items 1-7(which contain default information). Therefore, an error occurs when adding each new job position.  
-**This means that the `WS_2` web service does not work correctly (when sending a request to it, using the POST method, to the EndPoint "add_job_item" ).**
+- The Response to the Request ws3(3) contains an empty "Job Posting" section, except for items 1-7(which contain default information). Therefore, an error occurs when adding each new job position.
+- **This means that the `WS_2` web service does not work correctly and does not give correct response(when sending a request to it, using the POST method, to the EndPoint "add_job_item" ).**
+
+---
+
+---
 
 [^json]:
 
@@ -990,5 +994,3 @@ The Response to the Request ws3(3) contains an empty "Job Posting" section, exce
   }
 }
 ```
-
-)
