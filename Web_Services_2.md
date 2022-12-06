@@ -1,4 +1,4 @@
-# Solution of Task 2
+# Solution to Task 2
 
 `WS_1` - 162.55.220.72:5021
 

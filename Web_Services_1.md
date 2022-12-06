@@ -1,4 +1,4 @@
-# Solution of Task 1
+# Solution to Task 1
 
 `WS_1` - 162.55.220.72:5011
 
@@ -130,5 +130,7 @@
 ```
 
 ## Conclusion :
+
+Responses contain an empty "mobile" section.
 
 **WS_2 web service does not work correctly.**
