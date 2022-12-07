@@ -148,73 +148,58 @@ There are two web services :
   - Method: GET
   - EndPoint: /jobs_count
 
-    WS_1 отправляет запрос на WS_2
-    23.88.52.139:5032/get_jobs_count
+* `WS_1` sends the request to `WS_2` :
 
-WS_2 получает запрос от WS_1
-WS_2 парсит json, в которой 7 вакансий и считает количество вакансий. По умолчанию в json 7 вакансий.
-WS_2 отправляет ответ на WS_1 в котором будет json
+  - Method: GET
+  - EndPoint: /get_jobs_count
 
-```json
-{ "jobs_count": 7 }
-```
+* `WS_2` parses 'json' with all vacancies and counts their number. `WS_2` sends a response to WS_1 which will contain:
 
-WS_1 получает ответ от WS_2 и отправляет json
+  ```json
+  { "jobs_count": total_num }
+  ```
 
-```json
-{ "jobs_count": 7 }
-```
+- `WS_1` sends this received response to the client.
 
-клиенту.
+- `WS_1` receives a next request from a client:
 
-—-----------------------------
-Endpoint /all_jobs
-162.55.220.72:5031/all_jobs
-Get.
-WS_1 получает запрос от клиента.
-Никаких параметров не нужно
-WS_1 отправляет запрос на WS_2Проверить всё ли нормально в работает связка веб сервисов.
+  - Method: GET
+  - EndPoint: /all_jobs
 
-Есть 2 ws.
-WS_1 - 162.55
-23.88.52.139:5032/all_jobs
+  `WS_1` returns to client 'json' response containing all vacancies (7 first vacancies by default + added).
 
-WS_2 получает запрос от WS_1
-WS_2 парсит json, в которой 7 вакансий и считает количество вакансий. По умолчанию в json 7 вакансий.
-WS_2 отправляет ответ на WS_1 в котором будет json + все добавленные пользователем вакансии.
-WS_1 получает ответ от WS_2 и отправляет json клиенту.
-—-----------------------------
+### Adding a job vacancy
 
-Endpoint /add_job
-162.55.220.72:5031/add_job
-POST.
-WS_1 получает запрос от клиента.
-Никаких параметров не нужно
-WS_1 отправляет запрос на WS_2
-23.88.52.139:5032/add_job_item
-В теле запроса должен быть json
+- `WS_1` receives a request from a client:
 
-```json
-{"firm_title": "firm_title",
-"position_title": "position_title",
-"skills": ["skill_1", "skill_2", "skill_3"],
-"description": description,
-"Job Posting": job_posting,
-"Employee Status": employee_status}
-```
+  - Method: POST
+  - EndPoint: /add_job
+  - Body:
 
-WS_2 получает запрос от WS_1
-WS_2 парсит json, в которой 7 вакансий и считает количество вакансий. По умолчанию в json 7 вакансий.
-WS_2 добавляет в json присланную из WS_1 json.
-У добавленной вакансии будет id = +1 к общему количеству вакансий в json (n+1)
+    ```json
+    {"firm_title": “firm_title”,
+    "position_title": “position_title”,
+    "skills": [“skill_1”, “skill_2”, “skill_3”]
+    "description": description,
+    "Job Posting": job_posting,
+    "Employee Status": employee_status}
+    ```
 
-WS_2 отправляет ответ на WS_1 в котором будет json
+- `WS_1` sends this received request to the `WS_2` to the EndPoint: /add_job_item.
 
-```json
-{
-  "result_message": "Job added. Job id is 8",
-  "check_message": "call /all_jobs endpoint for checking."
-}
-```
+* `WS_2`:
 
-### Go to the [Solution of Task 3]()
+  - parses 'json' with all vacancies and counts their number
+  - adds a new vacancy to the general list of vacancies
+
+  * assigns the new vacancy `id = total_num + 1`
+  * sends a response to WS_1 which will contain:
+
+    ```json
+    {
+      "result_message": "Job added. Job id is __",
+      "check_message": "call /all_jobs endpoint for checking."
+    }
+    ```
+
+### Go to the [Solution of Task 3](https://github.com/dolcezza-ua/WebService_testing/blob/main/Web_Services_3.md)
