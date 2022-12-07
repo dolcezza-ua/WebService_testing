@@ -107,9 +107,9 @@
 
 - request Body raw JSON:
 
-  ```json
-  { "job_id": 6 }
-  ```
+```json
+{ "job_id": 6 }
+```
 
 **Response:**
 

@@ -56,7 +56,7 @@
 
 - EndPoint: /all_jobs
 
-**Response** [^json]
+**Response** [^1]
 
 **4.** Request `ws4(3)` to the WS_1
 
@@ -72,18 +72,18 @@
 
 - request Body raw JSON:
 
-  ```json
-  {
-    "firm_title": "GlobalLogic",
-    "position_title": "QA Engineer",
-    "skills": ["JavaScript", "Python", "Postman"],
-    "description": "Test plan development. Working from the specifications to develop and perform test plans that ensure the accurate functioning of the system. Issue management.Identifying, raising & prioritizing issues and tracking these to a successful resolution. Drive defect management and RCA for various client projects and find opportunities for improvement.",
-    "Job Posting": "Nov 20 2022",
-    "Employee Status": "full-time"
-  }
-  ```
+```json
+{
+  "firm_title": "GlobalLogic",
+  "position_title": "QA Engineer",
+  "skills": ["JavaScript", "Python", "Postman"],
+  "description": "Test plan development. Working from the specifications to develop and perform test plans that ensure the accurate functioning of the system. Issue management.Identifying, raising & prioritizing issues and tracking these to a successful resolution. Drive defect management and RCA for various client projects and find opportunities for improvement.",
+  "Job Posting": "Nov 20 2022",
+  "Employee Status": "full-time"
+}
+```
 
-  **Response:**
+**Response:**
 
 ```json
 {
@@ -135,7 +135,7 @@
 
 ---
 
-[^json]:
+[^1]:
 
 ```json
 {
