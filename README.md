@@ -1,6 +1,6 @@
 # WebService_testing
 
-## Here are three tasks for testing interconnected work of web services <br>(Task 1, Task 2, Task 3).
+## Here are three tasks for testing interconnected work of web services <br>([Task 1](https://github.com/dolcezza-ua/WebService_testing#task-1-web_services_1), [Task 2](https://github.com/dolcezza-ua/WebService_testing#task-2-web_services_2), [Task 3](https://github.com/dolcezza-ua/WebService_testing#task-3-web_services_3)).
 
 ---
 
